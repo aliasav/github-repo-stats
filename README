@@ -21,6 +21,12 @@ Overall it took me around a day and a half to get all components up and running.
 
 If given time I would like to do the following:
 
+0. Make the "get_stats" more intelligent.
+
+All project urls (issues, source files urls, pull requests urls etc.) have a common url pattern. The first section of the url path is username and second section is project name. These two sections are common in all urls, so all urls can be parsed to fetch username and project name from which github api url can be constructed.
+
+Depending on sections, intelligent errors can also be included in the api that tells user to include project name in the specified url.
+
 1. Make backend production ready. Some best practices have been omitted purposely due to time constrains.
 2. Set up own production server with deployment orchestration.
 3. Better UI. Also add additional information about issues. Right now, only the counts are displayed, however, the github API provides tonnes of information about issues. This is largely dependent on the requirements though.
