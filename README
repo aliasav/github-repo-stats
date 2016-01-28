@@ -1,0 +1,26 @@
+Solution README
+
+Problem Statement: Fetch statistics from GitHub.
+
+Solution:
+
+Firstly, I went through GitHub docs to study their API urls and found the right API which would contain all stats required to answer the business queries.
+
+The entire project could have been achieved using a simple python script that spawns a http server and uses urllib to fetch data from GitHub's API.
+
+However, I decided to go with a Django project and used heroku as the deployment platform. I could have also setup a server from scratch, taking care of the necessary devops, but decided to go with heroku since I did not previously it.
+
+I have used Angular for frontend and Django for backend. To integrate Angular with Django, a few gotchas had to be taken care off, such as changing the interpolation operator and adjusting for CORS errors.
+
+In the backend, I used django-rest-framework for creating a REST API backend. The api named "get_stats" check for url in the POST request, if a valid url is found, a github API friendly url is generated and stats are fetched. I have also written a parser that caters to different data fetching methods while using drf. The parser is well documented in utils.py. 
+
+I have kept my code modular, arranging all utility functions in utils.py and apis in views.py.
+The main focus of the project was to use best practices, where possible, but yet trying to adhere to time constraint.
+
+Overall it took me around a day and a half to get all components up and running.
+
+If given time I would like to do the following:
+
+1. Make backend production ready. Some best practices have been omitted purposely due to time constrains.
+2. Set up own production server with deployment orchestration.
+3. Better UI. Also add additional information about issues. Right now, only the counts are displayed, however, the github API provides tonnes of information about issues. This is largely dependent on the requirements though.
