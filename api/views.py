@@ -8,7 +8,8 @@ from rest_framework.parsers import JSONParser
 from rest_framework.renderers import JSONRenderer
 
 from django.conf import settings
-from api.utils import get_request_content, find_open_issues, find_open_issues_24h_7days, find_open_issues_7days, find_open_issues_24h
+from api.utils import get_request_content, find_open_issues, find_open_issues_24h_7days, \
+						find_open_issues_7days, find_open_issues_24h, clean_url
 from urlparse import urlparse
 import json, urllib2, logging
 
@@ -20,7 +21,7 @@ def render_landing_page(request, template="templates/web/landing_page.html"):
 	"""
 	Renders landing page
 	"""
-	logger.debug("Landing page rendered!")
+	#logger.debug("Landing page rendered!")
 	return render(request, template, context_instance=RequestContext(request))
 
 
@@ -33,8 +34,10 @@ def get_stats(request):
 
 	if valid_data:
 		
-		url_obj = urlparse(data['url'])		
-		logger.debug(url_obj)
+		data['url'] = clean_url(data['url'])
+		logger.debug("Clean url: %s" %data['url'])
+		url_obj = urlparse(data['url'])				
+
 		# generate github api url
 		api_url = settings.GITHUB_API_URL + "repos" + url_obj.path + "/issues"
 		

@@ -8,6 +8,12 @@ from rest_framework.parsers import JSONParser
 
 logger = logging.getLogger(__name__)
 
+# cleans a url
+def clean_url(url):
+    url = url.lstrip(" ")
+    url = url.rstrip("/")
+    return url
+
 # finds total open issues from a list of dicts
 def find_open_issues(issues_obj):
 

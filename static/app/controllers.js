@@ -17,6 +17,7 @@
             error: false,
         };
 
+        // function that makes a post request to server to fetch stats        
         $scope.getStats = function(){
 
             var re = /^(http[s]?:\/\/){0,1}([www]\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/;
@@ -45,7 +46,7 @@
                         $scope.flags.success = true;
                         $scope.flags.error = false;
 
-                        $location.hash('stats');                          
+                        $location.hash('pagebottom');                          
                         $anchorScroll();
 
                     }                    
@@ -56,6 +57,9 @@
                     $scope.flags.loading = false;
                     $scope.flags.success = false;
                     $scope.flags.error = true;
+
+                    $location.hash('pagebottom');                          
+                    $anchorScroll();
                 });
             }
         }

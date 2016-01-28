@@ -63,29 +63,29 @@
             <div class="row" ng-show="flags.success" id="stats">
                 <div class="row">
                     <div class="col-md-6 text-right"><p>Total Issues:</p></div>
-                    <div class="col-md-6 text-center"><h5>[[ stats.total_issues ]]</h5></div>
+                    <div class="col-md-6 text-left"><h5>[[ stats.total_issues ]]</h5></div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 text-right"><p>Total Open Issues:</p></div>
-                    <div class="col-md-6 text-center"><h5>[[ stats.total_open_issues ]]</h5></div>
+                    <div class="col-md-6 text-left"><h5>[[ stats.total_open_issues ]]</h5></div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 text-right"><p>Total Open issues (last 24hours):</p></div>
-                    <div class="col-md-6 text-center"><h5>[[ stats.open_issues_24h ]]</h5></div>
+                    <div class="col-md-6 text-left"><h5>[[ stats.open_issues_24h ]]</h5></div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 text-right"><p>Total Open issues (24hours - 7 days):</p></div>
-                    <div class="col-md-6 text-center"><h5>[[ stats.open_issues_24h_7days ]]</h5></div>
+                    <div class="col-md-6 text-left"><h5>[[ stats.open_issues_24h_7days ]]</h5></div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 text-right"><p>Total Open issues (more than 7 days):</p></div>
-                    <div class="col-md-6 text-center"><h5>[[ stats.open_issues_7days ]]</h5></div>
+                    <div class="col-md-6 text-left"><h5>[[ stats.open_issues_7days ]]</h5></div>
                 </div>
             </div>
             <div class="row" ng-show="flags.error">
                 <center>
-                    <div class="alert alert-danger">
-                      <strong>Error!</strong> The url you entered is not valid! Please enter a valid public git-hub repo such as: https://github.com/aliasav/github-repo-stats                      
+                    <div class="alert alert-danger" id="errors">
+                      <strong>Error!</strong> The url you entered is not valid! Please enter a valid public git-hub repo such as: <strong>https://github.com/aliasav/github-repo-stats</strong>                      
                     </div>
                 </center>
             </div>
@@ -98,6 +98,7 @@
             </center>
         </div>
     
+        <hr id="pagebottom">
     </section>
     
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
