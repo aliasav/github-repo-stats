@@ -8,11 +8,14 @@
     angular.module('githubRepoStats.controllers', [])
 
     // home controller
-    .controller("homeController", function($scope, $http, DOMAIN, API_URLS){
+    .controller("homeController", function($scope, $http, DOMAIN, API_URLS, $window, $location, $rootScope, $anchorScroll){
 
         $scope.url = "";
-        $scope.loadingFlag = false;
-        $scope.success = false;
+        $scope.flags = {
+            loading: false,
+            success: false,
+            error: false,
+        };
 
         $scope.getStats = function(){
 
@@ -27,19 +30,32 @@
                     url: $scope.url,
                 };
 
-                $scope.loadingFlag = true;
+                // show loading gif
+                $scope.flags.loading = true;
 
+                // make post request to server
                 $http.post(DOMAIN.server + API_URLS.getStats, data)
+                // api returned successful results                
                 .success(function(data, status, headers, config){
-                    console.info(data);
-                    $scope.loadingFlag = false;
-                    $scope.stats = data;
-                    $scope.success = true;
+
+                    if (status===200){
+                        // update flags
+                        $scope.flags.loading = false;
+                        $scope.stats = data;
+                        $scope.flags.success = true;
+                        $scope.flags.error = false;
+
+                        $location.hash('stats');                          
+                        $anchorScroll();
+
+                    }                    
                 })
                 .error(function(data, status, headers, config){
-                    console.info(data);
-                    $scope.loadingFlag = false;
-                    $scope.success = false;
+                    
+                    // update flags
+                    $scope.flags.loading = false;
+                    $scope.flags.success = false;
+                    $scope.flags.error = true;
                 });
             }
         }

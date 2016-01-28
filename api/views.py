@@ -41,8 +41,7 @@ def get_stats(request):
 		# fetch issues
 		try:			
 			issues_objects = urllib2.urlopen(api_url)
-		except:
-			logger.error("Github api returned code: %s" %issues_objects.getcode())
+		except:			
 			return Response(status=status.HTTP_400_BAD_REQUEST)
 		else:
 			
