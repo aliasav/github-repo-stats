@@ -35,8 +35,7 @@
 	// if modifying, also make corresponding changes in app_js_settings.sh in ops as well
 	.constant("DOMAIN", {
 		server1: "http://localhost:8000/",
-		server: "https://agile-fortress-98198.herokuapp.com/",
-		server2: "https://agile-fortress-98198.herokuapp.com/",
+		server: "http://stormy-sands-15461.herokuapp.com/",
  
 	})
 
