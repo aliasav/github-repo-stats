@@ -61,6 +61,12 @@
                 </div>
             </div><br>
             <div class="row" ng-show="flags.success" id="stats">
+                <center>
+                    <div class="alert alert-success" id="errors">
+                      Repository: <strong>[[ stats.repo_url ]] </strong>
+                    </div>
+                </center>
+
                 <div class="row">
                     <div class="col-md-6 text-right"><p>Total Issues:</p></div>
                     <div class="col-md-6 text-left"><h5>[[ stats.total_issues ]]</h5></div>

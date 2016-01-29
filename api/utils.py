@@ -2,11 +2,25 @@
 generic utilties to be used
 """
 
-import json, string, logging, datetime
+import json, string, logging, datetime, os.path, urlparse
 from rest_framework.parsers import JSONParser
+from django.conf import settings
 
 
 logger = logging.getLogger(__name__)
+
+# generates api url from any public url of format: api.github.com/<user>/<repo>/..
+def generate_github_api_url(url):
+    path = urlparse.urlparse(url).path
+    sections = []; temp = "";
+    while path != '/':
+        temp = os.path.split(path)
+        path = temp[0]
+        sections.append(temp[1])
+    
+    api_url = settings.GITHUB_API_URL + "repos/" + sections[-1] + "/" + sections[-2] + "/issues" 
+    repo_url = "http://github.com/" + sections[-1] + "/" + sections[-2]
+    return api_url, repo_url
 
 # cleans a url
 def clean_url(url):

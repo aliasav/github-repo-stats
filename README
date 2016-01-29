@@ -21,7 +21,7 @@ Overall it took me around a day and a half to get all components up and running.
 
 If given time I would like to do the following:
 
-0. Make the "get_stats" more intelligent.
+(DONE)0. Make the "get_stats" more intelligent.
 
 All project urls (issues, source files urls, pull requests urls etc.) have a common url pattern. The first section of the url path is username and second section is project name. These two sections are common in all urls, so all urls can be parsed to fetch username and project name from which github api url can be constructed.
 

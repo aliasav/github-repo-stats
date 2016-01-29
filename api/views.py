@@ -9,7 +9,7 @@ from rest_framework.renderers import JSONRenderer
 
 from django.conf import settings
 from api.utils import get_request_content, find_open_issues, find_open_issues_24h_7days, \
-						find_open_issues_7days, find_open_issues_24h, clean_url
+						find_open_issues_7days, find_open_issues_24h, clean_url, generate_github_api_url
 from urlparse import urlparse
 import json, urllib2, logging
 
@@ -34,12 +34,8 @@ def get_stats(request):
 
 	if valid_data:
 		
-		data['url'] = clean_url(data['url'])
-		logger.debug("Clean url: %s" %data['url'])
-		url_obj = urlparse(data['url'])				
-
-		# generate github api url
-		api_url = settings.GITHUB_API_URL + "repos" + url_obj.path + "/issues"
+		api_url, repo_url = generate_github_api_url(data['url'])
+		logger.debug("Api url: %s" %api_url)
 		
 		# fetch issues
 		try:			
@@ -64,6 +60,7 @@ def get_stats(request):
 					"open_issues_24h": t3,
 					"open_issues_24h_7days": t4,
 					"open_issues_7days": t5,
+					"repo_url": repo_url,
 				}
 
 				logger.debug("%s" %(resp_data))

@@ -34,8 +34,8 @@
 	// do not modify these patterns
 	// if modifying, also make corresponding changes in app_js_settings.sh in ops as well
 	.constant("DOMAIN", {
-		server1: "http://localhost:8000/",
-		server: "https://stormy-sands-15461.herokuapp.com/",
+		server: "http://localhost:8000/",
+		server1: "https://stormy-sands-15461.herokuapp.com/",
  
 	})
 
